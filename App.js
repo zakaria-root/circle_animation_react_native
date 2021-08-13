@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{ useRef, useState }  from 'react';
+import { Animated, View } from 'react-native';
+import CircleContainer from './component/circleContainer';
+
 
 export default function App() {
+
+  const [index , setIndex] = useState(0);
+  const animatedValue = useRef(new Animated.Value(0)).current;
+  const animation = (toValue) => Animated.timing(
+    animatedValue,
+    {
+      toValue,
+      duration: 3000,
+      useNativeDriver :false
+    }
+  );
+
+  const onPress = () => {
+    setIndex(index === 1 ? 0 : 1)
+    animation(index).start();
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <CircleContainer onPress={onPress} animatedValue={animatedValue} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
