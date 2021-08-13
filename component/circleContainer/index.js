@@ -37,7 +37,7 @@ const CircleContainer = ({onPress, animatedValue}) => {
                     {
                         scale : animatedValue.interpolate({
                             inputRange : [0 , 0.5, 1],
-                            outputRange : [1, 12, 1]
+                            outputRange : [1, 15, 1]
                         })
                     },
                     {
