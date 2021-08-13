@@ -5,9 +5,25 @@ import { AntDesign } from '@expo/vector-icons';
 import { Animated } from "react-native";
 
 const CircleContainer = ({onPress, animatedValue}) => {
+
+
+    const inputRange = [0, 0.001, 0.5, 0.5001, 1];
+
+    const containerBg = animatedValue.interpolate({
+        inputRange,
+        outputRange : ['gold', 'gold', 'gold', '#444', '#444']
+    })
+
+    const circleBg = animatedValue.interpolate({
+        inputRange,
+        outputRange : ['#444', '#444', '#444', 'gold', 'gold']
+    })
     return(
-        <View style={styles.container} >
-            <Animated.View style={[styles.button, {
+        <Animated.View style={[styles.container, {
+            backgroundColor : containerBg
+            }]} >
+            <Animated.View style={[styles.circle, {
+                backgroundColor : circleBg,
                 transform: [
                     {
                         perspective: 400,
@@ -27,7 +43,7 @@ const CircleContainer = ({onPress, animatedValue}) => {
                     {
                         translateX : animatedValue.interpolate({
                             inputRange : [0 , 0.5, 1],
-                            outputRange : [0, 25 , 0]
+                            outputRange : [0, 12 , 0]
                         })
                     },
                     
@@ -35,13 +51,14 @@ const CircleContainer = ({onPress, animatedValue}) => {
             }]}>
                 <TouchableOpacity 
                 onPress={onPress}
+                style={styles.icon}
                 >
                 <AntDesign name="caretright" size={20} color="white" />
                 </TouchableOpacity>
             </Animated.View>
             
             
-        </View>
+        </Animated.View>
     )
 }
 
