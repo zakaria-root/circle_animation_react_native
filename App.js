@@ -11,7 +11,7 @@ export default function App() {
     animatedValue,
     {
       toValue,
-      duration: 3000,
+      duration: 2500,
       useNativeDriver :false
     }
   );
