@@ -5,7 +5,7 @@ import CircleContainer from './component/circleContainer';
 
 export default function App() {
 
-  const [index , setIndex] = useState(0);
+  const [index , setIndex] = useState(1);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const animation = (toValue) => Animated.timing(
     animatedValue,
@@ -22,7 +22,7 @@ export default function App() {
   }
   return (
     <View>
-      <CircleContainer onPress={onPress} animatedValue={animatedValue} />
+      <CircleContainer onPress={onPress} animatedValue={animatedValue} index={index}/>
     </View>
   );
 }

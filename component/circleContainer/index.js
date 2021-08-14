@@ -1,10 +1,12 @@
 import styles from "./styles";
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { AntDesign } from '@expo/vector-icons'; 
-import { Animated } from "react-native";
+import { Animated, Text } from "react-native";
+import Login from "../login";
+import Register from "../register";
 
-const CircleContainer = ({onPress, animatedValue}) => {
+const CircleContainer = ({onPress, animatedValue, index}) => {
 
 
     const inputRange = [0, 0.001, 0.5, 0.5001, 1];
@@ -18,15 +20,23 @@ const CircleContainer = ({onPress, animatedValue}) => {
         inputRange,
         outputRange : ['#444', '#444', '#444', 'gold', 'gold']
     })
+    
     return(
         <Animated.View style={[styles.container, {
             backgroundColor : containerBg
             }]} >
+                {/* handlign the form */}
+                {index === 1 ?     
+                    <Login />
+                    :
+                    <Register />
+                }
+
             <Animated.View style={[styles.circle, {
                 backgroundColor : circleBg,
                 transform: [
                     {
-                        perspective: 400,
+                        perspective: 300,
                     },
                     {      
                         rotateY: animatedValue.interpolate({        
@@ -37,7 +47,7 @@ const CircleContainer = ({onPress, animatedValue}) => {
                     {
                         scale : animatedValue.interpolate({
                             inputRange : [0 , 0.5, 1],
-                            outputRange : [1, 15, 1]
+                            outputRange : [1, 8, 1]
                         })
                     },
                     {

@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     },
     icon : {
         padding: 30
+    },
+    form:{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     }
   });
 
