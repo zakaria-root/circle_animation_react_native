@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { Avatar } from "react-native-elements";
 import { Animated } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 const Mobile = ({animatedValue, circleBg}) => {
 

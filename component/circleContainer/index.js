@@ -69,7 +69,14 @@ const CircleContainer = ({onPress, animatedValue, index}) => {
                 onPress={onPress}
                 style={styles.icon}
                 >
-                <AntDesign name="caretright" size={20} color="white" />
+                <Animated.View style={{
+                opacity: animatedValue.interpolate({
+                            inputRange : [0 ,0.001, 0.5,0.9, 1],
+                            outputRange : [1, 0,0,0, 1]
+                        }) }}>
+                
+                <AntDesign name="caretright" size={20}  color={index === 1 ? "#303A73" : "#F2B3BF" }/>
+                </Animated.View>
                 </TouchableOpacity>
             </Animated.View>
             
