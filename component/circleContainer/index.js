@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { AntDesign } from '@expo/vector-icons'; 
 import { Animated, Text } from "react-native";
-import Login from "../login";
-import Register from "../register";
+import Mobile from "./mobile";
+import Web from "./web";
 
 const CircleContainer = ({onPress, animatedValue, index}) => {
 
@@ -13,12 +13,12 @@ const CircleContainer = ({onPress, animatedValue, index}) => {
 
     const containerBg = animatedValue.interpolate({
         inputRange,
-        outputRange : ['gold', 'gold', 'gold', '#444', '#444']
+        outputRange : ['#303A73', '#303A73', '#303A73', '#F2B3BF', '#F2B3BF']
     })
 
     const circleBg = animatedValue.interpolate({
         inputRange,
-        outputRange : ['#444', '#444', '#444', 'gold', 'gold']
+        outputRange : ['#F2B3BF', '#F2B3BF', '#F2B3BF', '#303A73', '#303A73']
     })
     
     return(
@@ -27,9 +27,15 @@ const CircleContainer = ({onPress, animatedValue, index}) => {
             }]} >
                 {/* handlign the form */}
                 {index === 1 ?     
-                    <Login />
+                    <Mobile 
+                    animatedValue={animatedValue} 
+                    circleBg={circleBg}
+                    />
                     :
-                    <Register />
+                    <Web 
+                    animatedValue={animatedValue} 
+                    circleBg={circleBg}
+                    />
                 }
 
             <Animated.View style={[styles.circle, {
